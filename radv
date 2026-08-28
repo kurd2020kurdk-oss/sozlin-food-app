@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مێنوی خواردن | قائمة الطعام</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma, Arial, sans-serif;
+    background:
+        linear-gradient(rgba(38,20,10,.92),rgba(38,20,10,.92)),
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f");
+    background-size:cover;
+    background-attachment:fixed;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* Header */
+.header{
+    text-align:center;
+    padding:25px 15px;
+    background:rgba(25,12,5,.95);
+    border-bottom:3px solid #dcae38;
+    position:relative;
+}
+
+.logo{
+    width:75px;
+    height:75px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(145deg,#f4c84a,#a86c13);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    box-shadow:0 0 20px rgba(244,200,74,.4);
+}
+
+.header h1{
+    margin-top:10px;
+    color:#f5ca4c;
+    font-size:27px;
+}
+
+.header p{
+    color:#eee;
+    margin-top:5px;
+}
+
+/* Language buttons */
+.language{
+    margin-top:18px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.language button{
+    border:1px solid #d9ad38;
+    background:#30180a;
+    color:#fff;
+    padding:9px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.language button.active{
+    background:#dcae38;
+    color:#2b1608;
+    font-weight:bold;
+}
+
+/* Container */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px 15px 40px;
+}
+
+/* Menu */
+.menu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+/* Card */
+.card{
+    background:rgba(255,248,231,.97);
+    color:#32190b;
+    border-radius:20px;
+    overflow:hidden;
+    border:2px solid #d9ad38;
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,.45);
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+}
+
+.info{
+    padding:14px;
+    text-align:center;
+}
+
+.number{
+    display:inline-flex;
+    width:38px;
+    height:38px;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#3b1d0c;
+    color:#f5ca4c;
+    border:2px solid #dcae38;
+    font-weight:bold;
+}
+
+.info h2{
+    margin-top:8px;
+    font-size:21px;
+}
+
+.info p{
+    color:#87601d;
+    margin-top:4px;
+}
+
+/* Footer */
+.footer{
+    text-align:center;
+    background:#211006;
+    border-top:3px solid #dcae38;
+    padding:25px 15px;
+    color:#f5ca4c;
+}
+
+.footer span{
+    display:block;
+    margin-top:6px;
+    color:#eee;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    .header h1{
+        font-size:23px;
+    }
+
+    .menu{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .card{
+        display:flex;
+        align-items:center;
+        min-height:125px;
+    }
+
+    .card img{
+        width:125px;
+        height:125px;
+    }
+
+    .info{
+        flex:1;
+        padding:10px;
+    }
+
+    .info h2{
+        font-size:18px;
+    }
+
+    .number{
+        width:32px;
+        height:32px;
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">👨‍🍳</div>
+
+    <h1 id="title">مێنوی خواردن</h1>
+    <p id="subtitle">خواردنی خۆش بۆ هەمووان ❤️</p>
+
+    <div class="language">
+        <button id="kuBtn" class="active" onclick="setLanguage('ku')">
+            🇮🇶 کوردی
+        </button>
+
+        <button id="arBtn" onclick="setLanguage('ar')">
+            🇮🇶 العربية
+        </button>
+    </div>
+
+</header>
+
+<main class="container">
+
+<section class="menu">
+
+    <!-- 1 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0" alt="بریانی">
+        <div class="info">
+            <div class="number">1</div>
+            <h2 class="ku">بریانی</h2>
+            <h2 class="ar" style="display:none">برياني</h2>
+            <p class="ku">بریانیی تایبەت</p>
+            <p class="ar" style="display:none">برياني مميز</p>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947" alt="کەباب">
+        <div class="info">
+            <div class="number">2</div>
+            <h2 class="ku">کەباب</h2>
+            <h2 class="ar" style="display:none">كباب</h2>
+            <p class="ku">کەبابی بەهاراتدار</p>
+            <p class="ar" style="display:none">كباب متبل</p>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc" alt="دۆلمە">
+        <div class="info">
+            <div class="number">3</div>
+            <h2 class="ku">دۆلمە</h2>
+            <h2 class="ar" style="display:none">دولمة</h2>
+            <p class="ku">دۆلمەی ماڵی</p>
+            <p class="ar" style="display:none">دولمة منزلية</p>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="یەپراخ">
+        <div class="info">
+            <div class="number">4</div>
+            <h2 class="ku">یەپراخ</h2>
+            <h2 class="ar" style="display:none">يبرق</h2>
+            <p class="ku">یەپراخی کوردی</p>
+            <p class="ar" style="display:none">يبرق كردي</p>
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd" alt="شۆربا">
+        <div class="info">
+            <div class="number">5</div>
+            <h2 class="ku">شۆربا</h2>
+            <h2 class="ar" style="display:none">شوربة</h2>
+            <p class="ku">شۆربای گەرم</p>
+            <p class="ar" style="display:none">شوربة ساخنة</p>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002" alt="پیتزا">
+        <div class="info">
+            <div class="number">6</div>
+            <h2 class="ku">پیتزا</h2>
+            <h2 class="ar" style="display:none">بيتزا</h2>
+            <p class="ku">پیتزای تایبەت</p>
+            <p class="ar" style="display:none">بيتزا خاصة</p>
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="برگر">
+        <div class="info">
+            <div class="number">7</div>
+            <h2 class="ku">برگر</h2>
+            <h2 class="ar" style="display:none">برجر</h2>
+            <p class="ku">برگری گۆشت</p>
+            <p class="ar" style="display:none">برجر لحم</p>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141" alt="پاستا">
+        <div class="info">
+            <div class="number">8</div>
+            <h2 class="ku">پاستا</h2>
+            <h2 class="ar" style="display:none">باستا</h2>
+            <p class="ku">پاستای خۆش</p>
+            <p class="ar" style="display:none">باستا لذيذة</p>
+        </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1593001872095-7d5b3868e0a7" alt="فلافل">
+        <div class="info">
+            <div class="number">9</div>
+            <h2 class="ku">فلافل</h2>
+            <h2 class="ar" style="display:none">فلافل</h2>
+            <p class="ku">فلافلی گەرم</p>
+            <p class="ar" style="display:none">فلافل ساخنة</p>
+        </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288" alt="ماسیی برژاو">
+        <div class="info">
+            <div class="number">10</div>
+            <h2 class="ku">ماسیی برژاو</h2>
+            <h2 class="ar" style="display:none">سمك مشوي</h2>
+            <p class="ku">ماسیی تازە و برژاو</p>
+            <p class="ar" style="display:none">سمك طازج ومشوي</p>
+        </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1606756790138-261d2b21cd75" alt="تۆڵەکە">
+        <div class="info">
+            <div class="number">11</div>
+            <h2 class="ku">تۆڵەکە</h2>
+            <h2 class="ar" style="display:none">دجاج مقلي</h2>
+            <p class="ku">تۆڵەکەی برژاو</p>
+            <p class="ar" style="display:none">دجاج مقلي مقرمش</p>
+        </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999" alt="سلاد">
+        <div class="info">
+            <div class="number">12</div>
+            <h2 class="ku">سلاد</h2>
+            <h2 class="ar" style="display:none">سلطة</h2>
+            <p class="ku">سلادی تازە</p>
+            <p class="ar" style="display:none">سلطة طازجة</p>
+        </div>
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+    <strong id="footerTitle">خواردنی تازە • تامێکی خۆش</strong>
+    <span id="footerText">بەخێربێیت بۆ مێنووی خواردنەکەمان ❤️</span>
+</footer>
+
+<script>
+
+function setLanguage(lang){
+
+    const kuElements = document.querySelectorAll(".ku");
+    const arElements = document.querySelectorAll(".ar");
+
+    if(lang === "ku"){
+
+        document.documentElement.lang = "ku";
+        document.documentElement.dir = "rtl";
+
+        kuElements.forEach(el => el.style.display = "");
+        arElements.forEach(el => el.style.display = "none");
+
+        document.getElementById("title").innerText =
+            "مێنوی خواردن";
+
+        document.getElementById("subtitle").innerText =
+            "خواردنی خۆش بۆ هەمووان ❤️";
+
+        document.getElementById("footerTitle").innerText =
+            "خواردنی تازە • تامێکی خۆش";
+
+        document.getElementById("footerText").innerText =
+            "بەخێربێیت بۆ مێنووی خواردنەکەمان ❤️";
+
+        document.getElementById("kuBtn").classList.add("active");
+        document.getElementById("arBtn").classList.remove("active");
+
+    }else{
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        kuElements.forEach(el => el.style.display = "none");
+        arElements.forEach(el => el.style.display = "");
+
+        document.getElementById("title").innerText =
+            "قائمة الطعام";
+
+        document.getElementById("subtitle").innerText =
+            "طعام لذيذ للجميع ❤️";
+
+        document.getElementById("footerTitle").innerText =
+            "طعام طازج • مذاق لذيذ";
+
+        document.getElementById("footerText").innerText =
+            "أهلاً بكم في قائمة طعامنا ❤️";
+
+        document.getElementById("kuBtn").classList.remove("active");
+        document.getElementById("arBtn").classList.add("active");
+    }
+}
+
+</script>
+
+</body>
+</html>
